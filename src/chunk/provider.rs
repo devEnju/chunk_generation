@@ -1,17 +1,17 @@
-use crate::dimension::Dimension;
+use crate::seed::Seed;
 
 use super::Chunk;
 
 pub trait Provider {
-    fn new() -> Self;
+    fn new(seed: &Seed) -> Self;
 
-    fn generate_chunk<T: Provider>(&self) -> Chunk<T>;
+    fn generate_chunk(&mut self, coords: (i32, i32)) -> Chunk;
 
-    fn load_chunk<'a, T: Provider>(&'a self, dimension: &'a Dimension<T>) -> Chunk<T> {
-        Chunk::new(dimension, (0, 0))
+    fn load_chunk() -> Chunk {
+        Chunk::new((0, 0))
     }
 
-    fn save_chunk<T: Provider>(&self, chunk: Chunk<T>) {
+    fn save_chunk<T: Provider>(&self, chunk: Chunk) {
         todo!()
     }
 }

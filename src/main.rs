@@ -4,12 +4,15 @@ use crate::octaves::{Notch, Octaves, Perlin, Simplex};
 
 mod chunk;
 mod dimension;
+mod math;
 mod octaves;
 mod random;
 mod seed;
 mod world;
 
 fn main() {
+    math::init();
+    
     println!("Hello, world!");
 
     let mut rand = random::Random::new(64);

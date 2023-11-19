@@ -28,14 +28,14 @@ impl Random {
         }
 
         let mut bits;
-        let mut val;
+        let mut var;
 
         loop {
             bits = self.next(31);
-            val = bits % bound;
+            var = bits % bound;
 
-            if bits - val + (bound - 1) >= 0 {
-                return val as u32;
+            if bits - var + (bound - 1) >= 0 {
+                return var as u32;
             }
         }
     }
@@ -59,13 +59,13 @@ impl Random {
             self.next(31);
         } else {
             let mut bits;
-            let mut val;
+            let mut var;
             
             loop {
                 bits = self.next(31);
-                val = bits % bound;
+                var = bits % bound;
     
-                if bits - val + (bound - 1) >= 0 {
+                if bits - var + (bound - 1) >= 0 {
                     break;
                 }
             }

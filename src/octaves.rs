@@ -72,6 +72,13 @@ impl Octaves<Perlin> {
 }
 
 impl Octaves<Notch> {
+    pub fn reset(&mut self) {
+        for octave in &mut self.octaves {
+            octave.option = Option::None;
+            octave.lerps = [0.0; 4];
+        }
+    }
+
     pub fn noise_2d(&self, x: i32, z: i32, frequency: f64) -> f64 {
         let mut total = 0.0;
         let mut frequency = frequency;
@@ -94,7 +101,7 @@ impl Octaves<Notch> {
             total += amplitude
                 * noise.generate_3d(
                     frequency * x as f64,
-                    frequency * height * y as f64,
+                    frequency * y as f64 * height,
                     frequency * z as f64,
                 );
             frequency *= 0.5;

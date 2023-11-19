@@ -18,15 +18,15 @@ impl Seed {
         }
     }
 
-    pub fn random_with_value(&self, coord: (i32, i32)) -> Random {
-        let (x, z) = coord;
+    pub fn random_with_value(&self, coords: (i32, i32)) -> Random {
+        let (x, z) = coords;
         let (u, v) = self.tuple;
 
         Random::new((x as i64 * u + z as i64 * v ^ self.value) as u64)
     }
 
-    pub fn random_with_const(&self, coord: (i32, i32)) -> Random {
-        let (x, z) = coord;
+    pub fn random_with_const(&self, coords: (i32, i32)) -> Random {
+        let (x, z) = coords;
         let (u, v) = Self::TUPLE;
 
         Random::new((x as i64 * u + z as i64 * v) as u64)

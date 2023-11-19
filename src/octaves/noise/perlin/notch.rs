@@ -4,8 +4,8 @@ use super::{Noise, Perlin};
 
 pub struct Notch {
     perlin: Perlin,
-    option: Option<usize>,
-    lerps: [f64; 4],
+    pub option: Option<usize>,
+    pub lerps: [f64; 4],
 }
 
 impl Noise for Notch {
